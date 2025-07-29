@@ -16,7 +16,7 @@
 - Modern web APIs
 
 ## Demo
-Live preview: [GitHub Pages URL akan diisi nanti]
+Live preview: https://fitlife-gym-after.netlify.app/
 
 ---
 Designed & Developed by **Rachmat Wahyudi**
