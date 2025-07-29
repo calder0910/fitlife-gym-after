@@ -145,10 +145,16 @@
         }
 
         .logo-ultra {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none; /* TAMBAHIN INI */
+    transition: transform 0.3s ease; /* TAMBAHIN INI */
+}
+
+.logo-ultra:hover {  /* TAMBAHIN BLOCK INI */
+    transform: scale(1.05);
+}
 
         .logo-symbol {
             width: 60px;
@@ -1784,10 +1790,10 @@
     <!-- ULTRA PREMIUM HEADER -->
     <header class="ultra-header" id="ultraHeader">
         <div class="header-container">
-            <div class="logo-ultra">
-                <div class="logo-symbol">F</div>
-                <div class="logo-text">FITLIFE</div>
-            </div>
+            <a href="#home" class="logo-ultra">
+    <div class="logo-symbol">F</div>
+    <div class="logo-text">FITLIFE</div>
+</a>
             <nav class="nav-ultra">
     <a href="#experience">Equipment</a>
     <a href="#trainers">Trainers</a>
