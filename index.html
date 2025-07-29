@@ -1768,6 +1768,100 @@
             .trainers-grid-ultra {
                 grid-template-columns: repeat(2, 1fr);
             }
+            /* MOBILE HEADER FIX */
+@media (max-width: 768px) {
+    .cursor-system { display: none; }
+    body { cursor: auto; }
+    
+    /* HEADER MOBILE */
+    .header-container { 
+        padding: 0 20px; 
+        flex-wrap: wrap;
+    }
+    
+    .logo-ultra {
+        gap: 10px;
+    }
+    
+    .logo-symbol {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+    
+    .logo-text {
+        font-size: 20px;
+        letter-spacing: 1px;
+    }
+    
+    /* MOBILE NAVIGATION */
+    .nav-ultra {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        backdrop-filter: blur(40px);
+        flex-direction: column;
+        gap: 0;
+        padding: 20px;
+        border-top: 1px solid var(--fitlife-neon);
+        z-index: 999;
+    }
+    
+    .nav-ultra.active {
+        display: flex;
+    }
+    
+    .nav-ultra a {
+        padding: 15px 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        font-size: 18px;
+    }
+    
+    .nav-ultra a:last-child {
+        border-bottom: none;
+    }
+    
+    /* MOBILE MENU BUTTON */
+    .mobile-menu-btn {
+        display: flex;
+        flex-direction: column;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        gap: 5px;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .mobile-menu-btn span {
+        width: 25px;
+        height: 3px;
+        background: var(--fitlife-neon);
+        transition: all 0.3s ease;
+        border-radius: 2px;
+    }
+    
+    .mobile-menu-btn.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .mobile-menu-btn.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .mobile-menu-btn.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    .header-cta .btn-cosmic {
+        padding: 10px 20px;
+        font-size: 12px;
+        letter-spacing: 1px;
+    }
         }
     </style>
 </head>
@@ -1799,16 +1893,21 @@
     <div class="logo-symbol">F</div>
     <div class="logo-text">FITLIFE</div>
 </a>
-            <nav class="nav-ultra">
+            <nav class="nav-ultra" id="mobileNav">
     <a href="#experience">Equipment</a>
     <a href="#trainers">Trainers</a>
     <a href="#progress">Progress</a>
     <a href="#membership">Membership</a>
     <a href="#contact">Contact</a>
 </nav>
-            <div class="header-cta">
-                <a href="#membership" class="btn-cosmic">JOIN THE ELITE</a>
-            </div>
+<div class="header-cta">
+    <div class="mobile-menu-btn" id="mobileMenuBtn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    <a href="#membership" class="btn-cosmic">JOIN THE ELITE</a>
+</div>
         </div>
     </header>
 
@@ -2735,6 +2834,38 @@ function initScrollToTop() {
         document.getElementById('cursorCore').classList.remove('cursor-magnetic');
         document.getElementById('cursorAura').classList.remove('magnetic');
     });
+}
+// MOBILE MENU FUNCTIONALITY
+function initMobileMenu() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileNav = document.getElementById('mobileNav');
+    
+    if(mobileMenuBtn && mobileNav) {
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        });
+        
+        // Close menu when clicking nav links
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenuBtn.classList.remove('active');
+                mobileNav.classList.remove('active');
+            });
+        });
+    }
+}
+
+// Add to initialization
+function initializeUltraExperience() {
+    initCursorSystem();
+    initParticleSystem();
+    initScrollEffects();
+    initMagneticElements();
+    initTiltEffects();
+    initAdvancedAnimations();
+    initScrollToTop();
+    initMobileMenu(); // TAMBAHIN INI
 }
     </script>
 </body>
