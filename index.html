@@ -148,11 +148,11 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    text-decoration: none; /* TAMBAHIN INI */
-    transition: transform 0.3s ease; /* TAMBAHIN INI */
+    text-decoration: none; /* Remove underline */
+    transition: all 0.3s ease;
 }
 
-.logo-ultra:hover {  /* TAMBAHIN BLOCK INI */
+.logo-ultra:hover {
     transform: scale(1.05);
 }
 
@@ -799,18 +799,19 @@
             box-shadow: 0 50px 150px rgba(255, 215, 0, 0.3);
         }
 
-        .trainer-image-container {
-            position: relative;
-            height: 400px;
-            overflow: hidden;
-        }
-
         .trainer-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top; /* TAMBAHIN INI - fokus ke muka */
+    transition: transform 0.5s ease;
+}
+
+.trainer-image-container {
+    position: relative;
+    height: 450px; /* DARI 400px JADI 450px */
+    overflow: hidden;
+}
 
         .trainer-card-ultra:hover .trainer-image {
             transform: scale(1.1);
@@ -1106,14 +1107,18 @@
     position: relative;
     overflow: visible;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    margin-top: 30px; /* SEMUA CARD SAMA MARGIN TOP */
+    margin-top: 30px;
+    display: flex; /* TAMBAHIN INI */
+    flex-direction: column; /* TAMBAHIN INI */
+    justify-content: space-between; /* TAMBAHIN INI */
+    min-height: 700px; /* TAMBAHIN INI */
 }
 
 .pricing-card-ultra.featured {
     transform: scale(1.05);
     border-color: var(--fitlife-gold);
     background: rgba(10, 10, 10, 0.95);
-    margin-top: 30px; /* DARI 0 JADI 30px - SAMA KAYAK YANG LAIN */
+    margin-top: 30px;
 }
 
 .featured-badge-ultra {
@@ -1790,10 +1795,10 @@
     <!-- ULTRA PREMIUM HEADER -->
     <header class="ultra-header" id="ultraHeader">
         <div class="header-container">
-            <div class="logo-ultra">
-                <div class="logo-symbol">F</div>
-                <div class="logo-text">FITLIFE</div>
-            </div>
+            <a href="https://fitlife-gym-after.netlify.app/" class="logo-ultra">
+    <div class="logo-symbol">F</div>
+    <div class="logo-text">FITLIFE</div>
+</a>
             <nav class="nav-ultra">
     <a href="#experience">Equipment</a>
     <a href="#trainers">Trainers</a>
